@@ -31,6 +31,7 @@ import { DemoSandboxModal } from '@/components/DemoSandboxModal';
 import { TomvisLogo } from '@/components/TomvisLogo';
 import { FoundationPillars } from '@/components/FoundationPillars';
 import { BioDigitalEcosystem } from '@/components/BioDigitalEcosystem';
+import { PanoramicBannerCard } from '@/components/PanoramicBannerCard';
 import { Project } from '@/types/project';
 
 export default function HomePage() {
@@ -222,6 +223,28 @@ export default function HomePage() {
             </div>
             <NetworkAnimation />
           </div>
+        </div>
+      </section>
+
+      {/* =========================================================================
+          PANORAMIC ARCHITECTURE CARD ("Card ยาวหน้า Page")
+          ========================================================================= */}
+      <section className="section" style={{ paddingTop: '3.5rem', paddingBottom: '3.5rem', borderBottom: '1px solid var(--border-subtle)' }}>
+        <div className="container">
+          <div className="section-header" style={{ marginBottom: '2rem' }}>
+            <span className="section-tag">
+              <Sparkles size={14} />
+              <span>Official Architecture Panorama</span>
+            </span>
+            <h2 className="section-title">
+              ระบบนิเวศแห่งความเชื่อมโยงระดับองค์กร
+            </h2>
+            <p className="section-description">
+              ภาพจำลองสถาปัตยกรรมจอมปลวกดิจิทัล (Connected Anthill Ecosystem) ถ่ายทอดความร่วมมือ พลังแห่งข้อมูล และการขับเคลื่อนสังคม
+            </p>
+          </div>
+
+          <PanoramicBannerCard />
         </div>
       </section>
 
