@@ -494,7 +494,8 @@ export const PROJECTS_DATA: Project[] = [
   },
   {
     id: 'pos',
-    slug: 'pos',
+    slug: 'smart-pos',
+    aliases: ['pos'],
     name: 'Smart POS',
     shortName: 'Smart POS',
     tagline: 'Retail & Welfare Shop Management',
@@ -657,7 +658,8 @@ export const PROJECTS_DATA: Project[] = [
   },
   {
     id: 'finance',
-    slug: 'finance',
+    slug: 'smart-finance',
+    aliases: ['finance'],
     name: 'Smart Finance',
     shortName: 'Smart Finance',
     tagline: 'Financial Management & Corporate Accounting',
@@ -819,7 +821,8 @@ export const PROJECTS_DATA: Project[] = [
   },
   {
     id: 'healthcare',
-    slug: 'healthcare',
+    slug: 'smart-healthcare',
+    aliases: ['healthcare'],
     name: 'Smart Healthcare',
     shortName: 'Smart Healthcare',
     tagline: 'Healthcare Application Platform & Clinical Intelligence',
@@ -980,7 +983,8 @@ export const PROJECTS_DATA: Project[] = [
   },
   {
     id: 'inspection',
-    slug: 'inspection',
+    slug: 'smart-inspection',
+    aliases: ['inspection'],
     name: 'Smart Inspection',
     shortName: 'Smart Inspection',
     tagline: 'Inspection & Field Intelligence Platform',
@@ -1143,7 +1147,8 @@ export const PROJECTS_DATA: Project[] = [
   },
   {
     id: 'dashboard',
-    slug: 'dashboard',
+    slug: 'smart-dashboard',
+    aliases: ['dashboard'],
     name: 'Smart Dashboard',
     shortName: 'Smart Dashboard',
     tagline: 'Enterprise Analytics Platform & Executive Intelligence',
@@ -1310,7 +1315,7 @@ export const USE_CASES_DATA = [
     subtitle: 'Hospitals & Medical Centers',
     description: 'Empowers medical facilities with patient safety shields, Adverse Drug Reaction prevention, digital medication reconciliation, and clinical telemetry.',
     iconName: 'HeartPulse',
-    solutionSlugs: ['healthcare', 'smart-ems'],
+    solutionSlugs: ['smart-healthcare', 'smart-ems'],
     tag: 'Clinical Grade'
   },
   {
@@ -1326,7 +1331,7 @@ export const USE_CASES_DATA = [
     subtitle: 'Corporations & Field Operations',
     description: 'Streamlined field workforce attendance, anti-spoofing GPS geofencing, photo evidence logging, shift scheduling, and enterprise financial controls.',
     iconName: 'Building2',
-    solutionSlugs: ['smartop', 'finance'],
+    solutionSlugs: ['smartop', 'smart-finance'],
     tag: 'Operational Velocity'
   },
   {
@@ -1342,7 +1347,7 @@ export const USE_CASES_DATA = [
     subtitle: 'Store Chains & Welfare Shops',
     description: 'Lightning-fast touch checkout, barcode scanning, welfare employee credits, multi-location stock replenishment, and instant e-receipts.',
     iconName: 'ShoppingBag',
-    solutionSlugs: ['pos'],
+    solutionSlugs: ['smart-pos'],
     tag: 'High Throughput'
   },
   {
@@ -1350,7 +1355,7 @@ export const USE_CASES_DATA = [
     subtitle: 'Treasury & Corporate Accounting',
     description: 'Automated AR Aging analysis, 3-way matching purchase orders, vendor payables scheduling, hard budget enforcement, and cash flow forecasts.',
     iconName: 'CircleDollarSign',
-    solutionSlugs: ['finance'],
+    solutionSlugs: ['smart-finance'],
     tag: 'Fiscal Control'
   },
   {
@@ -1358,7 +1363,7 @@ export const USE_CASES_DATA = [
     subtitle: 'Public Agencies & Municipalities',
     description: 'Field compliance auditing, GIS route-optimized inspection tours, facility risk assessment scoring, and tamper-proof digital certificates.',
     iconName: 'Landmark',
-    solutionSlugs: ['inspection'],
+    solutionSlugs: ['smart-inspection'],
     tag: 'Public Compliance'
   },
   {
@@ -1366,7 +1371,7 @@ export const USE_CASES_DATA = [
     subtitle: 'Regional Units & Communities',
     description: 'Accessible, scalable digital infrastructure connecting dispersed community branches, welfare initiatives, and local operational workflows.',
     iconName: 'Network',
-    solutionSlugs: ['smartop', 'dashboard'],
+    solutionSlugs: ['smartop', 'smart-dashboard'],
     tag: 'Modular Reach'
   }
 ];
@@ -1488,9 +1493,17 @@ export const SECURITY_STANDARDS = [
 ];
 
 export function getProjectBySlug(slug: string): Project | undefined {
-  return PROJECTS_DATA.find((p) => p.slug.toLowerCase() === slug.toLowerCase());
+  const s = slug.toLowerCase();
+  return PROJECTS_DATA.find((p) => p.slug.toLowerCase() === s || (p.aliases && p.aliases.some((a) => a.toLowerCase() === s)));
 }
 
 export function getAllProjectSlugs(): string[] {
-  return PROJECTS_DATA.map((p) => p.slug);
+  const slugs: string[] = [];
+  for (const p of PROJECTS_DATA) {
+    slugs.push(p.slug);
+    if (p.aliases) {
+      slugs.push(...p.aliases);
+    }
+  }
+  return slugs;
 }

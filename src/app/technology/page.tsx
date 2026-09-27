@@ -16,7 +16,8 @@ import {
   CheckCircle2,
   Lock,
   Container,
-  Globe
+  Globe,
+  FileText
 } from 'lucide-react';
 import { TECH_STACK_DATA } from '@/data/projects';
 import { ArchitectureDiagram } from '@/components/ArchitectureDiagram';
@@ -63,53 +64,108 @@ export default function TechnologyPage() {
       <section className="section" style={{ borderBottom: '1px solid var(--border-subtle)', background: 'var(--bg-primary)' }}>
         <div className="container">
           <div className="section-header">
-            <span className="section-tag">Design Foundations</span>
-            <h2 className="section-title">Architectural Principles</h2>
+            <span className="section-tag">Core Principles</span>
+            <h2 className="section-title">Key Architectural Foundations</h2>
             <p className="section-description">
-              Engineered from the ground up for modularity, zero vendor lock-in, and uncompromising tenant isolation.
+              Engineered according to modern software engineering standards for resilience, maintainability, and enterprise security.
             </p>
           </div>
 
           <div
             style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-              gap: '1.75rem',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+              gap: '1.5rem',
             }}
           >
-            <div className="glass-card" style={{ padding: '2rem', borderRadius: 'var(--radius-lg)' }}>
-              <div style={{ width: '42px', height: '42px', borderRadius: '10px', background: 'rgba(14, 165, 233, 0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--primary)', marginBottom: '1rem' }}>
-                <Boxes size={22} />
+            {/* 1. Modular Architecture */}
+            <div className="glass-card" style={{ padding: '1.75rem', borderRadius: 'var(--radius-lg)' }}>
+              <div style={{ width: '40px', height: '40px', borderRadius: '10px', background: 'rgba(14, 165, 233, 0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--primary)', marginBottom: '1rem' }}>
+                <Boxes size={20} />
               </div>
-              <h3 style={{ fontSize: '1.2rem', fontWeight: 800, color: 'var(--text-primary)', marginBottom: '0.5rem' }}>
-                Modular Domain Plugins
+              <h3 style={{ fontSize: '1.15rem', fontWeight: 800, color: 'var(--text-primary)', marginBottom: '0.45rem' }}>
+                1. Modular Architecture
               </h3>
-              <p style={{ fontSize: '0.86rem', color: 'var(--text-secondary)', lineHeight: 1.6 }}>
-                Each business vertical (Healthcare, EMS, Workforce, Finance, POS, Inspection) operates as an encapsulated module with its own models, validation rules, and API endpoints without coupling to other modules.
+              <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', lineHeight: 1.6 }}>
+                Decoupled domain modules (Healthcare, EMS, Workforce, Finance, POS, Inspection) operate independently with clean boundaries, pluggable interfaces, and zero spaghetti coupling.
               </p>
             </div>
 
-            <div className="glass-card" style={{ padding: '2rem', borderRadius: 'var(--radius-lg)' }}>
-              <div style={{ width: '42px', height: '42px', borderRadius: '10px', background: 'rgba(99, 102, 241, 0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#818cf8', marginBottom: '1rem' }}>
-                <Activity size={22} />
+            {/* 2. API First */}
+            <div className="glass-card" style={{ padding: '1.75rem', borderRadius: 'var(--radius-lg)' }}>
+              <div style={{ width: '40px', height: '40px', borderRadius: '10px', background: 'rgba(16, 185, 129, 0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--vis-green)', marginBottom: '1rem' }}>
+                <Globe size={20} />
               </div>
-              <h3 style={{ fontSize: '1.2rem', fontWeight: 800, color: 'var(--text-primary)', marginBottom: '0.5rem' }}>
-                Event Bus & Real-time Sockets
+              <h3 style={{ fontSize: '1.15rem', fontWeight: 800, color: 'var(--text-primary)', marginBottom: '0.45rem' }}>
+                2. API First
               </h3>
-              <p style={{ fontSize: '0.86rem', color: 'var(--text-secondary)', lineHeight: 1.6 }}>
-                Sub-second event bus handling high-frequency ambulance telemetry, geofence violations, vital signs changes, and stock depletion across distributed client instances.
+              <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', lineHeight: 1.6 }}>
+                Every data transaction and workflow is designed as a standardized RESTful/JSON API contract with OpenAPI documentation, ensuring client-agnostic web and mobile accessibility.
               </p>
             </div>
 
-            <div className="glass-card" style={{ padding: '2rem', borderRadius: 'var(--radius-lg)' }}>
-              <div style={{ width: '42px', height: '42px', borderRadius: '10px', background: 'rgba(16, 185, 129, 0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#10b981', marginBottom: '1rem' }}>
-                <Database size={22} />
+            {/* 3. Role Based Access Control */}
+            <div className="glass-card" style={{ padding: '1.75rem', borderRadius: 'var(--radius-lg)' }}>
+              <div style={{ width: '40px', height: '40px', borderRadius: '10px', background: 'rgba(245, 158, 11, 0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--accent-amber)', marginBottom: '1rem' }}>
+                <Lock size={20} />
               </div>
-              <h3 style={{ fontSize: '1.2rem', fontWeight: 800, color: 'var(--text-primary)', marginBottom: '0.5rem' }}>
-                ACID Persistence & Isolation
+              <h3 style={{ fontSize: '1.15rem', fontWeight: 800, color: 'var(--text-primary)', marginBottom: '0.45rem' }}>
+                3. Role Based Access Control (RBAC)
               </h3>
-              <p style={{ fontSize: '0.86rem', color: 'var(--text-secondary)', lineHeight: 1.6 }}>
-                Strict relational data integrity powered by enterprise MySQL clusters with partitioned schemas, row-level tenant keying, and encrypted immutable audit logs.
+              <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', lineHeight: 1.6 }}>
+                Granular, multi-tier permission matrix enforcing role boundaries (Admin, Director, Supervisor, Operator) across UI widgets, API endpoints, and database rows.
+              </p>
+            </div>
+
+            {/* 4. Audit Log */}
+            <div className="glass-card" style={{ padding: '1.75rem', borderRadius: 'var(--radius-lg)' }}>
+              <div style={{ width: '40px', height: '40px', borderRadius: '10px', background: 'rgba(99, 102, 241, 0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#818cf8', marginBottom: '1rem' }}>
+                <FileText size={20} />
+              </div>
+              <h3 style={{ fontSize: '1.15rem', fontWeight: 800, color: 'var(--text-primary)', marginBottom: '0.45rem' }}>
+                4. Audit Log
+              </h3>
+              <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', lineHeight: 1.6 }}>
+                Tamper-evident, append-only transaction logs recording actor ID, IP address, timestamp, and pre/post modification diffs for critical financial and clinical actions.
+              </p>
+            </div>
+
+            {/* 5. Multi System Integration */}
+            <div className="glass-card" style={{ padding: '1.75rem', borderRadius: 'var(--radius-lg)' }}>
+              <div style={{ width: '40px', height: '40px', borderRadius: '10px', background: 'rgba(236, 72, 153, 0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#ec4899', marginBottom: '1rem' }}>
+                <GitBranch size={20} />
+              </div>
+              <h3 style={{ fontSize: '1.15rem', fontWeight: 800, color: 'var(--text-primary)', marginBottom: '0.45rem' }}>
+                5. Multi System Integration
+              </h3>
+              <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', lineHeight: 1.6 }}>
+                Built-in connectors for FHIR/HL7 hospital systems, 1669 EMS dispatch hubs, payment gateways, and municipal open data endpoints via secure webhooks and JSON contracts.
+              </p>
+            </div>
+
+            {/* 6. Scalable Deployment */}
+            <div className="glass-card" style={{ padding: '1.75rem', borderRadius: 'var(--radius-lg)' }}>
+              <div style={{ width: '40px', height: '40px', borderRadius: '10px', background: 'rgba(59, 130, 246, 0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#3b82f6', marginBottom: '1rem' }}>
+                <Zap size={20} />
+              </div>
+              <h3 style={{ fontSize: '1.15rem', fontWeight: 800, color: 'var(--text-primary)', marginBottom: '0.45rem' }}>
+                6. Scalable Deployment
+              </h3>
+              <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', lineHeight: 1.6 }}>
+                Horizontally scalable stateless Node.js / Next.js runtimes managed by PM2 process clusters behind Nginx reverse proxy with load balancing and asset caching.
+              </p>
+            </div>
+
+            {/* 7. Cloud / VPS Deployment */}
+            <div className="glass-card" style={{ padding: '1.75rem', borderRadius: 'var(--radius-lg)' }}>
+              <div style={{ width: '40px', height: '40px', borderRadius: '10px', background: 'rgba(16, 185, 129, 0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--sprout-green)', marginBottom: '1rem' }}>
+                <Server size={20} />
+              </div>
+              <h3 style={{ fontSize: '1.15rem', fontWeight: 800, color: 'var(--text-primary)', marginBottom: '0.45rem' }}>
+                7. Cloud / VPS Deployment
+              </h3>
+              <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', lineHeight: 1.6 }}>
+                Runs cleanly on dedicated Ubuntu Linux VPS or cloud instances (AWS, GCP, DigitalOcean) with automated PM2 process lifecycle, systemd daemons, and Let’s Encrypt TLS.
               </p>
             </div>
           </div>

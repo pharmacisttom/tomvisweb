@@ -257,11 +257,51 @@ export default function LiveDemoPage() {
                   display: 'flex',
                   flexDirection: 'column',
                   borderRadius: 'var(--radius-xl)',
-                  padding: '2rem',
+                  padding: '1.75rem',
+                  border: '1px solid var(--border-card)',
+                  overflow: 'hidden',
                 }}
               >
+                {/* Screenshot / Interface Preview Box */}
+                {project.screenshots && project.screenshots.length > 0 && (
+                  <div
+                    style={{
+                      height: '140px',
+                      borderRadius: 'var(--radius-md)',
+                      backgroundColor: 'var(--bg-tertiary)',
+                      border: '1px solid var(--border-subtle)',
+                      marginBottom: '1.25rem',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      justifyContent: 'space-between',
+                      padding: '1rem',
+                      position: 'relative',
+                      overflow: 'hidden',
+                      background: 'linear-gradient(135deg, rgba(14, 165, 233, 0.12) 0%, rgba(16, 185, 129, 0.08) 100%)',
+                    }}
+                  >
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', zIndex: 1 }}>
+                      <span style={{ fontSize: '0.72rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.06em', color: 'var(--primary)' }}>
+                        Interactive Sandbox
+                      </span>
+                      <span style={{ fontSize: '0.72rem', color: 'var(--text-muted)', background: 'var(--bg-primary)', padding: '0.15rem 0.5rem', borderRadius: 'var(--radius-xs)', border: '1px solid var(--border-subtle)' }}>
+                        {project.screenshots[0].device} preview
+                      </span>
+                    </div>
+
+                    <div style={{ zIndex: 1 }}>
+                      <div style={{ fontSize: '0.95rem', fontWeight: 800, color: 'var(--text-primary)', marginBottom: '0.2rem' }}>
+                        {project.screenshots[0].title}
+                      </div>
+                      <div style={{ fontSize: '0.75rem', color: 'var(--text-secondary)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                        {project.screenshots[0].caption}
+                      </div>
+                    </div>
+                  </div>
+                )}
+
                 {/* Header: Status & Version */}
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1rem' }}>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.75rem' }}>
                   {getStatusBadge(project.status)}
                   <span style={{ fontSize: '0.74rem', fontFamily: 'monospace', color: 'var(--text-muted)' }}>
                     {project.version}
@@ -273,7 +313,7 @@ export default function LiveDemoPage() {
                   <span style={{ fontSize: '0.72rem', textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--primary)', fontWeight: 700 }}>
                     {project.category}
                   </span>
-                  <h3 style={{ fontSize: '1.5rem', fontWeight: 800, color: 'var(--text-primary)', marginTop: '0.15rem' }}>
+                  <h3 style={{ fontSize: '1.45rem', fontWeight: 800, color: 'var(--text-primary)', marginTop: '0.15rem' }}>
                     {project.name}
                   </h3>
                   <p style={{ fontSize: '0.86rem', fontWeight: 600, color: 'var(--text-secondary)' }}>
@@ -286,33 +326,63 @@ export default function LiveDemoPage() {
                   {project.description}
                 </p>
 
+                {/* Technologies List */}
+                <div style={{ marginBottom: '1.25rem' }}>
+                  <div style={{ fontSize: '0.72rem', fontWeight: 700, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '0.5rem' }}>
+                    Technology Stack
+                  </div>
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.35rem' }}>
+                    {project.technologies.slice(0, 4).map((tech) => (
+                      <span
+                        key={tech}
+                        style={{
+                          fontSize: '0.72rem',
+                          fontFamily: 'monospace',
+                          color: 'var(--text-secondary)',
+                          background: 'var(--bg-tertiary)',
+                          padding: '0.2rem 0.5rem',
+                          borderRadius: 'var(--radius-xs)',
+                          border: '1px solid var(--border-subtle)',
+                        }}
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                    {project.technologies.length > 4 && (
+                      <span style={{ fontSize: '0.7rem', color: 'var(--text-muted)', alignSelf: 'center', padding: '0 0.2rem' }}>
+                        +{project.technologies.length - 4}
+                      </span>
+                    )}
+                  </div>
+                </div>
+
                 {/* Demo Accounts Credentials Box */}
                 {project.demoCredentials && project.demoCredentials.length > 0 && (
                   <div
                     style={{
                       background: 'var(--bg-secondary)',
                       borderRadius: 'var(--radius-md)',
-                      padding: '1rem',
+                      padding: '0.85rem',
                       border: '1px solid var(--border-subtle)',
                       marginBottom: '1.25rem',
                     }}
                   >
-                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
-                      <span style={{ fontSize: '0.72rem', fontWeight: 700, textTransform: 'uppercase', color: 'var(--text-muted)' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.45rem' }}>
+                      <span style={{ fontSize: '0.7rem', fontWeight: 700, textTransform: 'uppercase', color: 'var(--text-muted)' }}>
                         Synthetic Demo Account
                       </span>
-                      <span style={{ fontSize: '0.72rem', color: '#10b981', fontWeight: 600 }}>
+                      <span style={{ fontSize: '0.7rem', color: 'var(--vis-green)', fontWeight: 600 }}>
                         {project.demoCredentials[0].role}
                       </span>
                     </div>
 
-                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.5rem' }}>
+                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.45rem' }}>
                       {/* Copy Username */}
                       <div
                         onClick={() => copyCredential(project.demoCredentials![0].username, `${project.id}-user`)}
                         style={{
                           background: 'var(--bg-primary)',
-                          padding: '0.45rem 0.65rem',
+                          padding: '0.4rem 0.6rem',
                           borderRadius: 'var(--radius-xs)',
                           border: '1px solid var(--border-subtle)',
                           cursor: 'pointer',
@@ -323,10 +393,10 @@ export default function LiveDemoPage() {
                         }}
                         title="Click to copy Username"
                       >
-                        <span style={{ fontSize: '0.75rem', fontFamily: 'monospace', color: 'var(--text-primary)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                        <span style={{ fontSize: '0.72rem', fontFamily: 'monospace', color: 'var(--text-primary)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                           {project.demoCredentials[0].username}
                         </span>
-                        {copiedKey === `${project.id}-user` ? <Check size={12} color="#10b981" /> : <Copy size={12} color="var(--text-muted)" />}
+                        {copiedKey === `${project.id}-user` ? <Check size={12} color="var(--vis-green)" /> : <Copy size={12} color="var(--text-muted)" />}
                       </div>
 
                       {/* Copy Password */}
@@ -334,7 +404,7 @@ export default function LiveDemoPage() {
                         onClick={() => copyCredential(project.demoCredentials![0].password, `${project.id}-pass`)}
                         style={{
                           background: 'var(--bg-primary)',
-                          padding: '0.45rem 0.65rem',
+                          padding: '0.4rem 0.6rem',
                           borderRadius: 'var(--radius-xs)',
                           border: '1px solid var(--border-subtle)',
                           cursor: 'pointer',
@@ -345,34 +415,34 @@ export default function LiveDemoPage() {
                         }}
                         title="Click to copy Password"
                       >
-                        <span style={{ fontSize: '0.75rem', fontFamily: 'monospace', color: 'var(--text-primary)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                        <span style={{ fontSize: '0.72rem', fontFamily: 'monospace', color: 'var(--text-primary)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                           {project.demoCredentials[0].password}
                         </span>
-                        {copiedKey === `${project.id}-pass` ? <Check size={12} color="#10b981" /> : <Copy size={12} color="var(--text-muted)" />}
+                        {copiedKey === `${project.id}-pass` ? <Check size={12} color="var(--vis-green)" /> : <Copy size={12} color="var(--text-muted)" />}
                       </div>
                     </div>
                   </div>
                 )}
 
-                {/* Action Buttons */}
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.2fr', gap: '0.75rem', marginTop: 'auto' }}>
-                  <Link
-                    href={`/solutions/${project.slug}`}
-                    className="btn btn-secondary btn-sm"
-                    style={{ width: '100%' }}
-                  >
-                    <span>View Details</span>
-                    <ArrowUpRight size={14} />
-                  </Link>
-
+                {/* Action Buttons: View Demo & View Details */}
+                <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: '0.75rem', marginTop: 'auto', paddingTop: '0.85rem', borderTop: '1px solid var(--border-subtle)' }}>
                   <button
                     onClick={() => setActiveSandboxProject(project)}
                     className="btn btn-primary btn-sm"
-                    style={{ width: '100%' }}
+                    style={{ width: '100%', justifyContent: 'center' }}
                   >
                     <PlayCircle size={15} />
-                    <span>Launch Demo</span>
+                    <span>View Demo</span>
                   </button>
+
+                  <Link
+                    href={`/solutions/${project.slug}`}
+                    className="btn btn-secondary btn-sm"
+                    style={{ width: '100%', justifyContent: 'center' }}
+                  >
+                    <span>Details</span>
+                    <ArrowUpRight size={14} />
+                  </Link>
                 </div>
               </div>
             ))}

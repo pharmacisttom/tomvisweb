@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next';
 import { PROJECTS_DATA } from '@/data/projects';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://showcase.tomvis.local';
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://tomvisolution.tech';
   const currentDate = new Date().toISOString();
 
   // Static standard routes

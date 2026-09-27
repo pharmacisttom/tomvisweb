@@ -5,15 +5,17 @@ import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://tomvisolution.tech'),
   title: {
-    default: 'TOMVIS | Demo & Solution Showcase',
-    template: '%s | TOMVIS Showcase'
+    default: 'TOMVIS Framework | Modular Enterprise Digital Solutions',
+    template: '%s | TOMVIS Framework'
   },
-  description: 'Tomvis is a modular application platform designed for building modern, secure and scalable digital solutions. One Framework. Multiple Solutions.',
+  description: 'TOMVIS is a modular digital solution platform for developing enterprise web applications, healthcare systems, emergency EMS, cooperatives, finance, and operational dashboards. Simple • Connected • Sustainable.',
   keywords: [
-    'Tomvis',
-    'Tomvis Framework',
-    'Solution Showcase',
+    'TOMVIS',
+    'TOMVIS Framework',
+    'Modular Digital Solution Platform',
+    'Healthcare Technology',
     'SmartOP',
     'Smart EMS',
     'Smart Cooperative',
@@ -21,20 +23,48 @@ export const metadata: Metadata = {
     'Smart Finance',
     'Smart Healthcare',
     'Smart Inspection',
-    'Smart Dashboard'
+    'Smart Dashboard',
+    'Enterprise Web Application',
+    'Hospital Information System',
+    'Connected Care'
   ],
-  authors: [{ name: 'Tomvis Architecture Team' }],
+  authors: [{ name: 'TOMVIS Architecture Team' }],
+  alternates: {
+    canonical: 'https://tomvisolution.tech',
+  },
   openGraph: {
-    title: 'TOMVIS | Demo & Solution Showcase',
-    description: 'One Framework. Multiple Solutions. Explore live interactive demonstrations of enterprise solutions built on the Tomvis platform.',
-    siteName: 'TOMVIS Demo & Solution Showcase',
+    title: 'TOMVIS Framework | Building a Connected Tomorrow',
+    description: 'TOMVIS is a modular digital solution platform for modern enterprise applications. One Framework. Multiple Solutions.',
+    url: 'https://tomvisolution.tech',
+    siteName: 'TOMVIS Framework',
+    images: [
+      {
+        url: '/images/tomvis-landscape-card.png',
+        width: 1200,
+        height: 630,
+        alt: 'TOMVIS Framework - Building a Connected Tomorrow',
+      },
+    ],
+    locale: 'th_TH',
     type: 'website',
-    locale: 'en_US',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'TOMVIS Framework | Building a Connected Tomorrow',
+    description: 'Modular digital solution platform for enterprise and healthcare web applications.',
+    images: ['/images/tomvis-landscape-card.png'],
   },
   robots: {
     index: true,
     follow: true,
-  }
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
 };
 
 export const viewport: Viewport = {

@@ -51,6 +51,7 @@ export interface ProjectSecurityInfo {
 export interface Project {
   id: string;
   slug: string;
+  aliases?: string[];
   name: string;
   shortName: string;
   tagline: string;

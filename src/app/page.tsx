@@ -134,54 +134,97 @@ export default function HomePage() {
 
             {/* Main Tomvis Logo Presentation */}
             <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '1.25rem' }}>
-              <TomvisLogo size="hero" showFramework={true} showMotto={true} />
+              <TomvisLogo size="hero" showFramework={true} showMotto={false} />
             </div>
 
-            {/* Slogan & English Concept */}
+            {/* Slogan & Core Messaging */}
             <div style={{ margin: '1.5rem 0 1rem 0' }}>
-              <div
+              <h1
                 style={{
-                  fontSize: 'clamp(1.4rem, 2.8vw, 2.1rem)',
-                  fontWeight: 800,
-                  letterSpacing: '-0.02em',
+                  fontSize: 'clamp(2rem, 4vw, 3.2rem)',
+                  fontWeight: 900,
+                  letterSpacing: '-0.03em',
                   color: 'var(--text-primary)',
                   marginBottom: '0.65rem',
+                  lineHeight: 1.15,
                 }}
               >
-                “One Framework. Multiple Solutions.”
+                Building a Connected Tomorrow
+              </h1>
+              
+              {/* Concept Pills: Simple • Connected • Sustainable */}
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.6rem', flexWrap: 'wrap', margin: '1rem 0 1.25rem 0' }}>
+                <span className="badge badge-available" style={{ fontSize: '0.85rem', padding: '0.35rem 0.9rem', fontWeight: 700 }}>
+                  Simple
+                </span>
+                <span style={{ color: 'var(--text-muted)' }}>•</span>
+                <span className="badge badge-private" style={{ fontSize: '0.85rem', padding: '0.35rem 0.9rem', fontWeight: 700 }}>
+                  Connected
+                </span>
+                <span style={{ color: 'var(--text-muted)' }}>•</span>
+                <span className="badge badge-coming-soon" style={{ fontSize: '0.85rem', padding: '0.35rem 0.9rem', fontWeight: 700 }}>
+                  Sustainable
+                </span>
               </div>
+
               <p
                 style={{
-                  fontSize: 'clamp(1rem, 1.6vw, 1.15rem)',
+                  fontSize: 'clamp(1.05rem, 1.7vw, 1.25rem)',
+                  color: 'var(--text-primary)',
+                  fontWeight: 600,
+                  lineHeight: 1.6,
+                  maxWidth: '780px',
+                  margin: '0 auto 0.75rem auto',
+                }}
+              >
+                TOMVIS คือ Modular Digital Solution Platform สำหรับพัฒนา Web Application และระบบงานองค์กร
+              </p>
+              
+              <p
+                style={{
+                  fontSize: '0.95rem',
                   color: 'var(--text-secondary)',
-                  lineHeight: 1.65,
-                  maxWidth: '740px',
+                  lineHeight: 1.6,
+                  maxWidth: '720px',
                   margin: '0 auto',
                 }}
               >
-                Tomvis is a modular application platform designed for building modern, secure and scalable digital solutions.
+                เชื่อมโยงทุกโครงสร้างระบบด้วยสถาปัตยกรรมโมดูลาร์ที่ยืดหยุ่น ปลอดภัยสูง และพร้อมขยายผลสู่อนาคต
               </p>
             </div>
 
-            {/* Small Yet Connected Quote Badge */}
-            <div style={{ margin: '1.25rem 0 2rem 0' }}>
-              <span
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '0.45rem',
-                  fontSize: '0.85rem',
-                  fontWeight: 700,
-                  color: 'var(--earth-gold)',
-                  background: 'rgba(217, 119, 6, 0.12)',
-                  border: '1px solid rgba(217, 119, 6, 0.3)',
-                  padding: '0.35rem 0.95rem',
-                  borderRadius: 'var(--radius-full)',
-                }}
-              >
-                <Sparkles size={14} />
-                <span>“เล็กแต่เชื่อมโยง ยิ่งใหญ่กว่าเดิม” • From Ideas to Better Solutions</span>
-              </span>
+            {/* 8 Supported Domains Badges */}
+            <div style={{ margin: '1.5rem 0 2rem 0' }}>
+              <div style={{ fontSize: '0.8rem', fontWeight: 700, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '0.65rem' }}>
+                Empowering 8 Enterprise Sectors
+              </div>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', justifyContent: 'center', maxWidth: '820px', margin: '0 auto' }}>
+                {[
+                  'Healthcare',
+                  'EMS',
+                  'Workforce',
+                  'Cooperative',
+                  'Retail',
+                  'Finance',
+                  'Public Administration',
+                  'Data Analytics'
+                ].map((sector) => (
+                  <span
+                    key={sector}
+                    style={{
+                      fontSize: '0.8rem',
+                      fontWeight: 600,
+                      color: 'var(--text-secondary)',
+                      background: 'var(--bg-tertiary)',
+                      border: '1px solid var(--border-subtle)',
+                      padding: '0.3rem 0.75rem',
+                      borderRadius: 'var(--radius-full)',
+                    }}
+                  >
+                    {sector}
+                  </span>
+                ))}
+              </div>
             </div>
 
             {/* Hero CTA Action Buttons */}
@@ -201,13 +244,12 @@ export default function HomePage() {
 
               <Link href="/demo" className="btn btn-secondary btn-lg">
                 <PlayCircle size={18} color="var(--vis-green)" />
-                <span>Live Demo</span>
+                <span>View Demo</span>
               </Link>
 
-              <a href="#ecosystem" className="btn btn-outline btn-lg">
-                <Sprout size={18} />
-                <span>About Ecosystem</span>
-              </a>
+              <Link href="/contact" className="btn btn-outline btn-lg">
+                <span>Contact Us</span>
+              </Link>
             </div>
           </div>
 
